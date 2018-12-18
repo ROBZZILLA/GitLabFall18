@@ -32,6 +32,11 @@
 //Prototypes
 void shuffle(int *a, int *b, int SIZE);
 void combine(int *a, int *b, int *c, int *d, int *all);
+                            
+void upper(char x[]);
+void robdead(void);
+void enter(void);
+
 
 
 
@@ -5506,10 +5511,252 @@ void main(void)
                     }
                     case 21:
                     {
-                        while(choice != 99)
-                        {
-                            puts("you open the door and find the one and only Rob. Game over man.");
-                            scanf("%d",&choice);
+                    while(choice != 99)
+                    {
+                            
+
+			FILE *fp;
+			char b[1000]={0};
+			char c;
+			int x=0;
+			int choice1=9;
+			int choice2=9;
+			int choice3=9;
+			int choice4=9;
+			int choice5=9;
+			int choice6=9;
+			int choice7=9;
+			int choice8=9;
+			int choice9=9;
+			int i;
+			int fubar=0;
+			char g[100]={0};
+	
+
+
+			printf("\n\n\n\n\nApon closer observation of door #21,\nyou notice a message scrawled on the a small Post-It:\n\n\n\n\n\n\n\n\n'THIS ONE'S THE BEST ONE!'\n\t\t\t\t-Rob\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+
+			printf("To jump through the door, ");
+			enter();
+			printf("You open the door and leap through!\n\nAs your eyes adjust to the darkness, you notice something shiny on the floor.\n");
+
+			while (choice1==9)
+			{
+				printf("\n\nDo you pick it up?\n\n1=yes\n2=no\n:");
+				scanf("%d",&choice1);
+		
+				if (choice1==1)
+				{
+					printf("\n\n\nYou decide to pick up whatever caught your eye.\nAs you lean in to grab it, you realize it is a large, gold-colored coin!\n");
+					enter();
+					continue;
+				}
+				if (choice1==2) 
+				{
+					printf("\n\nYou decide to not pick it up. It could be a trap!\n");
+					enter();
+					continue;
+				}
+				else
+				{	
+					printf("You're so confused, your head explodes.\nGAME OVER!\n");
+					exit(1);
+				}
+			}
+			printf("\n\n\n\n\n\n\n\n\n\n\n\nYour eyes adjust, and you realize your in a cave. There are two doors with a pedestal in between them. There's also a tunnel with a large skull and crossbones sign over it.\nYou don't immediately notice anything else in the room.\n\n");
+
+			///////////////THE ROOM PART_1
+
+
+			while (choice2!=4)
+			{
+				choice3=9;
+				printf("Which do you approach?\n1=The first door\n2=The second door\n3=The pedestal\n4=The sketchy tunnel\n:");
+				scanf("%d",&choice2);
+
+				if (choice2==1)
+				{
+					printf("\n\n\n\nYou decide to check out the door on the left side.\nIt's a average-sized door, and seems to be made out of solid gold!\nThere is a large keyhole in the door.\nA strange voice breaks the silence: ''I see you out there!\nIf you want Rosanna, she's not here! If you want Poppe, the magic word is Fubar!\nNow leave me alone!");
+					printf("\n\nWow... That was rude!\nYou step back to the middle of the room\n");	
+					fgetc(stdin);
+					enter();
+					continue;
+				}
+
+				if (choice2==2)
+				{
+					printf("\n\nYou decide to check out the door on the right side.\nIt is a very large door wooden door, at least 20 feet tall!\nA booming voice greets you:''MAGIC WORD?''\n\n");
+		
+
+					while(choice3!=2) /////////////////CHOICE_3
+					{
+						printf("\n\n\nWhat do you do?\n1=Say something\n2=Walk away\nAnything else and you die!\n");
+						scanf("%d",&choice3);
+
+						if(choice3==1)
+						{
+							printf("\n\n\nWhat do you say?\n:");
+							fgetc(stdin);
+							fgets(g,100,stdin);
+							upper(g);
+							printf("\n\n\n\n\n\n\n\n\n\n\nThe voice was pretty loud, so you decide you should probably yell.\nAs loud as you can, you say:\n\n%s\n",g);
+			
+							if (fubar>0)
+							{
+								printf("A moment passes, and then:\n''OHH! THE MAGIC WORD!''\n\nThe giant door begins to rumble, and you see it start to open.\nFor what seems like minutes, the door continues to slowly open.\nFinally, with the giant wooden door completely ajar,\na figure larger than the door opening itself begins to stoop through. Once inside the room with you, you realize it is a giant Poppe!\n\n''FUBAR FUBAR FUBAR! HAHAHA YOU LOOK TASTY!''\n\nYou try to run away, but you are quickly picked up by the back of your shirt. Dangling in front of the giant Poppe's mouth, you decide you had a good run and hope you do indeed taste good.\n\n\nYou are tasty and dead! Game over!");
+								exit(1);
+							}
+							else
+							{
+								printf("\n\n\nA moment passes, and then another. You hear nothing.");
+							}
+							continue;
+						}
+						if (choice3==2)
+						{
+							printf("That door is freakin huge, and you dont want to find out what's on the other side! Back to the middle of the room!\n\n\n\n\n");
+							continue;
+						}	
+					}//////////////END CHOICE_3
+				}
+				if (choice2==3)
+				{
+					printf("You approach the pedestal. It is about chest high, and made of marble.\n There is a book on the pedestal, with a quill in a vial of ink.\nThe last entry says...\n");
+					while(choice4!=3)
+					{	
+						printf("What do you do?\n1=Write in the book   2=Read the current page   3=Walk away\n:");
+						scanf("%d",&choice4);
+						if (choice4==1)
+						{
+							fp=fopen("book.txt","a");
+							printf("What would you like to write?");
+							fgetc(stdin);
+							fgets(b,1000,stdin);
+							fprintf(fp,"%s",b);
+							fclose(fp);
+							printf("\n\n\n");
+							continue;
+						}
+						if(choice4==2)
+						{
+							printf("The page reads\n:");
+							fp=fopen("book.txt","r");
+							while ((c=fgetc(fp)) !=EOF)
+							{
+								printf("%c",c);
+							}
+							fclose(fp);
+							printf("\n\n\n");
+							continue;
+						}
+						if(choice4==3)
+						{
+							printf("You decide to just walk back to the middle of the room");
+							enter();
+						}			
+					}
+					continue;
+				}
+				if(choice2==4)
+				{
+					printf("\n\n\n\n\n\n\n\n\nYou decide to check out the sketchy looking tunnel.\nIt's a tight fit, but you crawl through anyways.\n");
+					enter();
+					printf("\n\nOn the other side of the tunnel....... A dragon treasure cave!");
+					printf("\n\nA booming voice:\n\n'OOOHHHH DO YOU HAVE MY GOODIES?'");
+					while (choice5!=1)
+					{
+						printf("\n\nWhat do you say?\n1='Yes...'\n2='No...'\n3='Who are you and what goodies?'\n:");
+						scanf("%d",&choice5);
+						if (choice5==2)
+						{
+							printf("\n\nWHAT? NO GOODIES????? \n\nNO BIG DEAL... I'LL JUST EAT YOU!");
+							printf("\n\n\nYou're dragon food!\nGAME OVER\n\n");
+							exit(1);
+						}
+						if (choice5==3)
+						{
+							printf("'Who are you and what goodies?' (You say)\n\nThe dragon rears and speaks:\n'I'M ROSSANA THE DRAGON, (DUH)! DIDN't YOU READ THE SIGN?\nNOW WHERE'S MY CHOCOLATE?!'\n");
+							enter();
+							continue;
+						}
+						if(choice5==1)
+						{
+							printf("'I've got your goodies!' (You say with VERY little confidence)\nYou reach into your pocket.....\n\n");
+							enter();
+							if (choice1==1)
+							{
+								printf("What's this? That gold-colored coin you picked up earlier....\n\nYou pull out the coin and throw it to the dragon.\n\n");
+								enter();
+								printf("YES! GOLD CHOCOLATE COINS ARE MY FAVE! I CAN'T EAT THEM, BUT THEY SURE LOOK COOL!\nYOU DIDN'T LOOK THAT TASTY ANYWAYS...");
+								printf("\n\nThe dragon then throws you a golden key. 'HERE YA GO BUDDY' (says the dragon)");
+								enter();
+								printf("You squeeze back through the tunnel and find yourself back in the room with the doors.\nAs you get up, the entire tunnel collapses! That was close!");
+								enter();
+								continue;
+							}
+							if (choice1==2)
+							{
+								printf("You rumage through your pocket and pull out a crumpled grocery receipt...\nIt's all you have, so you hand that to the dragon...");
+								printf("\n\n'OMG I LOVE RECEIPT SEASONING!'(says the dragon)\n\n");
+								enter();
+								printf("The dragon happily eats you and your receipt!\nGAME OVER!");
+								exit(1);
+							}
+						}
+					}
+				}
+			}
+		
+
+			printf("Back in the middle of the cave with the doors...\nThe pedistal seems to have fallen over. You don't see the book anywhere...\n\n");
+			while(choice6!=69)
+			{
+				printf("Which do you approach?\n\n\n1=The large wooden door\n2=The golden door\n3=The collapsed tunnel\n:");
+				scanf("%d",&choice6);
+				if(choice6==1)
+				{
+					printf("You decide to go back to the large wooden door. A rumbling voice says:\n'MAGIC WORD?'\n\n\n");
+					while(choice7!=2)
+					{
+						printf("What do you do?\n1=Say Something   2=Walk Away\n:");
+						scanf("%d",&choice7);
+						if(choice7==1)
+						{
+							printf("What do you say?\n:");
+							fgetc(stdin);
+							fgets(g,1000,stdin);
+							upper(g);
+							printf("You yell\n:\n%s\n",g);
+							if (fubar>0)
+							{
+								printf("A moment passes, and then:\n'OH THE MAGIC WORD!'\n\nThe giant door swings open and a giant emerges from the openning!\n\nFUBAR FUBAR FUBAR! YOU LOOK TASTY!\n\n\nYou turn to run, but the giant picks you up and eats you!\n\nYou are tasty indeed!\nGAME OVER!\n\n\n");
+								exit(1);
+							}
+							else
+							{
+								printf("You decide to just walk back to the middle of the room...");
+							}
+							continue;
+						}
+					}	
+				}
+				if(choice6==2)
+				{
+					choice8=4;
+					printf("You decide to go check out the golden door...");
+					printf("A voice from the other side:\n'I see you out there! Don't ask me again for the magin word! I hate repeating myself!");		
+					while(choice8!=3)
+					{
+						printf("What do you do?\n\n1=Ask for the magic word   2=Use that key you picked up   3=Walk away\n");
+						scanf("%d",&choice8);
+						if(choice8==1)
+						{
+							printf("You ask: 'What's the magin word'?\n....\n.......\n............ no answer...");
+							continue;
+						}
+					}
+				return 0;
+				}
                         }
                         break;
                     }
@@ -6130,3 +6377,26 @@ void TypeWriter(char *arr){
     }
 }
 
+
+void upper(char x[])
+{
+	int i;
+	for(i=0;i<100;i++)
+	{
+		if (islower(x[i]))
+		{
+			x[i]=(x[i]-32);
+			continue;
+		}
+	}
+}
+void robdead(void)
+{
+	printf("\nYou decide to try to break Rob's code, and now you cease to exist. Game over!\n\n");
+}
+void enter(void)
+{
+	printf("\nPress Enter\n");
+	fgetc(stdin);
+	getchar();
+}
